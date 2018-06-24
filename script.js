@@ -39,20 +39,6 @@ new_folders.forEach((el, i) => {
     }
 
     ensureDirectoryExistence(el.temp_path);
-
-    // fs.mkdir(el.path, (err)=>{
-    //     console.log(el.path, err);
-    // })
-
-    // el.temp_path.forEach((item, i, arr) => {
-    //     let str = arr.splice(0, i+1);
-    //     // console.log(str, item, i);
-    //     // console.log(arr, i);
-    //
-    //     if(!fs.existsSync(item)){
-    //
-    //     }
-    // });
 });
 
 const objects = new_folders.map(el => {
@@ -64,7 +50,9 @@ const objects = new_folders.map(el => {
 
 const json = JSON.stringify(objects);
 
-fs.writeFile('sorted-folders.json', json, 'utf8');
+fs.writeFileSync('sorted-folders.json', json, 'utf8');
+
+console.log('Parse has ended.');
 
 function ensureDirectoryExistence(filePath) {
     var dirname = path.dirname(filePath);
